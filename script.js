@@ -19,7 +19,7 @@ const requiredFields = [
 const sessionHistory = [];
 
 // Paste your deployed Google Apps Script Web App URL here (see Part E of the lab)
-const WEB_APP_URL = "YOUR_WEB_APP_URL";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwRXzr7adNng59zPKku0zjlP5JusaEJuphIgMfIAvyKUFYNvy2RXAg-kTocL7YhWwMe/exec";
 
 // ---- Element references ----
 const form = document.getElementById("bmiForm");
