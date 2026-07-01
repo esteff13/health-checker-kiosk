@@ -1,0 +1,373 @@
+/* =========================================================
+   Health Self-Check Kiosk — Design Tokens
+   Palette: quiet clinic-sage + warm paper background
+   Type: Fraunces (display) / Inter (body) / IBM Plex Mono (numbers)
+   ========================================================= */
+:root {
+  --bg: #f6f4ee;
+  --surface: #ffffff;
+  --ink: #1f2b24;
+  --muted: #6b7a70;
+  --line: #e3e0d4;
+
+  --primary: #3f6e58;
+  --primary-dark: #2c4f3f;
+  --primary-soft: #e9f1ec;
+
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --shadow: 0 16px 36px -22px rgba(31, 43, 36, 0.45);
+
+  /* BMI category tokens */
+  --under: #4e7fb0;
+  --under-bg: #eaf1f8;
+  --normal: #3f8a57;
+  --normal-bg: #e9f4eb;
+  --over: #c08a2e;
+  --over-bg: #fbf1df;
+  --obese: #b5504a;
+  --obese-bg: #fbebe9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2 {
+  font-family: "Fraunces", serif;
+  margin: 0;
+  color: var(--primary-dark);
+}
+
+.muted {
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  padding: 2.5rem 1.5rem 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.site-header h1 {
+  font-size: 2rem;
+}
+
+.tagline {
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* ---------- Layout ---------- */
+.layout {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0.5rem 1.5rem 1rem;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 1.75rem;
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+}
+
+.history-card {
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+  padding: 1.75rem 1.75rem 1.5rem;
+}
+
+/* ---------- Form ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.1rem;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+input,
+select {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #fdfcfa;
+  color: var(--ink);
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+  border-color: var(--primary);
+}
+
+.error-msg {
+  min-height: 1.2em;
+  color: var(--obese);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0.3rem 0 0.8rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  transition: background 150ms ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-secondary {
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+  margin-top: 1.4rem;
+}
+
+/* ---------- Result card ---------- */
+.result-card {
+  text-align: center;
+}
+
+.result-card.hidden {
+  display: none;
+}
+
+.gauge-wrap {
+  position: relative;
+  width: 220px;
+  margin: 0 auto 0.5rem;
+}
+
+.gauge {
+  width: 100%;
+  overflow: visible;
+}
+
+.gauge-track {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 14;
+  stroke-linecap: round;
+}
+
+.gauge-fill {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 14;
+  stroke-linecap: round;
+}
+
+.gauge-readout {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bmi-number {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.bmi-unit {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.category-badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0.8rem;
+}
+
+.recommendation {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0 auto 0.4rem;
+  max-width: 340px;
+}
+
+.result-name {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Category color states, applied via cat-<name> class */
+.cat-under {
+  background: var(--under-bg);
+  color: var(--under);
+}
+.cat-normal {
+  background: var(--normal-bg);
+  color: var(--normal);
+}
+.cat-over {
+  background: var(--over-bg);
+  color: var(--over);
+}
+.cat-obese {
+  background: var(--obese-bg);
+  color: var(--obese);
+}
+
+/* ---------- History list ---------- */
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.history-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+}
+
+.history-bmi {
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--muted);
+}
+
+.history-cat {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.empty-state {
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 0.6rem 0.2rem;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2.5rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* =========================================================
+   Responsive breakpoints
+   ========================================================= */
+
+/* Tablet: stack the two main cards */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile: stack paired fields vertically (required by spec) */
+@media (max-width: 600px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .card {
+    padding: 1.3rem;
+  }
+}

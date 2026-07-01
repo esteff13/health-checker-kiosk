@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Self-Check Kiosk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">＋</span>
+      <div>
+        <p class="eyebrow">DLSU-D Wellness Kiosk</p>
+        <h1>Health Self-Check</h1>
+      </div>
+    </div>
+    <p class="tagline">Enter your details. Get your BMI. Get a plan.</p>
+  </header>
+
+  <main class="layout">
+
+    <section class="card form-card" aria-labelledby="form-heading">
+      <h2 id="form-heading">Your details</h2>
+
+      <form id="bmiForm" novalidate>
+        <div class="field">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="e.g. Juan Dela Cruz" required />
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="1" max="120" placeholder="20" required />
+          </div>
+          <div class="field">
+            <label for="sex">Sex</label>
+            <select id="sex" name="sex" required>
+              <option value="">Select</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="weight">Weight (kg)</label>
+            <input type="number" id="weight" name="weight" min="1" step="0.1" placeholder="60" required />
+          </div>
+          <div class="field">
+            <label for="height">Height (cm)</label>
+            <input type="number" id="height" name="height" min="1" step="0.1" placeholder="165" required />
+          </div>
+        </div>
+
+        <p class="error-msg" id="errorMsg" role="alert"></p>
+
+        <button type="submit" class="btn-primary">Check My BMI</button>
+      </form>
+    </section>
+
+    <section class="card result-card hidden" id="resultCard" aria-live="polite">
+      <h2>Your Result</h2>
+
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 200 120" class="gauge" id="gaugeSvg" aria-hidden="true">
+          <path d="M20,110 A80,80 0 0 1 180,110" class="gauge-track" />
+          <path d="M20,110 A80,80 0 0 1 180,110" class="gauge-fill" id="gaugeFill" />
+        </svg>
+        <div class="gauge-readout">
+          <span class="bmi-number" id="bmiNumber">--</span>
+          <span class="bmi-unit">kg/m²</span>
+        </div>
+      </div>
+
+      <p class="category-badge" id="categoryBadge">--</p>
+      <p class="recommendation" id="recommendation"></p>
+      <p class="result-name" id="resultName"></p>
+
+      <button class="btn-secondary" id="resetBtn" type="button">Check another</button>
+    </section>
+
+  </main>
+
+  <section class="card history-card" aria-labelledby="history-heading">
+    <h2 id="history-heading">Recent Check-ins <span class="muted">(this session)</span></h2>
+    <ul id="historyList" class="history-list">
+      <li class="empty-state">No check-ins yet — results will appear here.</li>
+    </ul>
+  </section>
+
+  <footer class="site-footer">
+    <p>For screening purposes only — not a medical diagnosis. Concerned about your results? Visit the campus clinic.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
